@@ -1,8 +1,12 @@
 package com.example.cityeventsandr.view;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -67,5 +71,22 @@ public class EventListView extends AppCompatActivity implements EventListContrac
     @Override
     public void showError(String message) {
         Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.actionbar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == R.id.action_register_event) { //si se selecciona la opción de registrar evento
+            Intent intent = new Intent(this, RegisterEventActivity.class);
+            startActivity(intent);
+            return true;
+        }
+
+        return false;
     }
 }
