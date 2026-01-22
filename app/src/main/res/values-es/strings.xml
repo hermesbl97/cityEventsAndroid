@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CityEventsAndr</string>
+    <string name="event_name">Nombre evento</string>
+    <string name="event_description">Descripción</string>
+    <string name="event_date">Fecha evento</string>
+    <string name="event_category">Categoría</string>
+    <string name="event_price">Precio</string>
+    <string name="register">Registrar evento</string>
+</resources>
