@@ -16,10 +16,10 @@
         android:theme="@style/Theme.CityEventsAndr"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".activity.RegisterEventActivity"
+            android:name=".view.RegisterEventActivity"
             android:exported="false" />
         <activity
-            android:name=".activity.MainActivity"
+            android:name=".view.EventListView"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
