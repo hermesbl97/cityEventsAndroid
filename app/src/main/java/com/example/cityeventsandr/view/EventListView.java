@@ -1,4 +1,4 @@
-package com.example.cityeventsandr.activity;
+package com.example.cityeventsandr.view;
 
 import android.os.Bundle;
 import android.widget.Toast;
@@ -11,9 +11,10 @@ import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.adapter.EventAdapter;
 import com.example.cityeventsandr.api.EventApi;
 import com.example.cityeventsandr.api.EventApiInterface;
+import com.example.cityeventsandr.contract.EventListContract;
 import com.example.cityeventsandr.domain.Event;
+import com.example.cityeventsandr.presenter.EventListPresenter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,15 +22,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity {
+public class EventListView extends AppCompatActivity implements EventListContract.View {
 
     private EventAdapter eventAdapter;
     private List<Event> eventList;
+    private EventListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        presenter = new EventListPresenter(this);
 
         eventList = new ArrayList<>();
 
@@ -45,29 +49,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
 
-        refreshList();
+        presenter.loadEvents();
     }
 
-    private void refreshList() {
+    @Override
+    public void showEvents(List<Event> events) {
         eventList.clear();
+        eventList.addAll(events);
+        eventAdapter.notifyDataSetChanged();
+    }
 
-        EventApiInterface eventAPi = EventApi.builInstance();
-        Call<List<Event>> getEventsCall = eventAPi.getEvents(); //recogemos el resultado de la llamda
+    @Override
+    public void showMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
+    }
 
-        getEventsCall.enqueue(new Callback<>() {
-            @Override
-            public void onResponse(Call<List<Event>> call, Response<List<Event>> response) {
-                if (response.code() == 200) {
-                    eventList.addAll(response.body());
-                    eventAdapter.notifyDataSetChanged();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<List<Event>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "No se ha podido conectar con el servidor", Toast.LENGTH_SHORT).show();
-                t.printStackTrace();
-            }
-        });
+    @Override
+    public void showError(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
     }
 }
