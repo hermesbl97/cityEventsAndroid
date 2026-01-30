@@ -5,8 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTintMode="screen"
     android:padding="10dp"
-    tools:context=".view.RegisterEventActivity">
+    tools:context=".view.RegisterEventView">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,45 +16,80 @@
         tools:layout_editor_absoluteX="1dp"
         tools:layout_editor_absoluteY="1dp">
 
-        <TextView
+        <EditText
             android:id="@+id/event_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_name"
-            android:onClick="registerEvent" />
+            android:ems="10"
+            android:hint="@string/nombre_del_evento"
+            android:inputType="text" />
 
-        <TextView
+        <EditText
             android:id="@+id/event_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_description" />
+            android:ems="10"
+            android:hint="@string/event_description"
+            android:inputType="text" />
 
-        <TextView
+        <EditText
             android:id="@+id/event_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:hint="@string/event_date"
             android:inputType="date" />
 
-        <TextView
+        <EditText
+            android:id="@+id/event_capacity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/event_capacity"
+            android:inputType="number" />
+
+        <EditText
             android:id="@+id/event_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/event_category" />
+            android:ems="10"
+            android:hint="@string/event_category"
+            android:inputType="text" />
 
-        <TextView
+        <EditText
             android:id="@+id/event_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:ems="10"
             android:hint="@string/event_price"
             android:inputType="numberDecimal" />
+
+        <Spinner
+            android:id="@+id/spinnerLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingTop="5dp"
+            android:prompt="@string/select_location" />
+
+        <Spinner
+            android:id="@+id/spinnerArtist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:paddingTop="5dp"
+            android:prompt="@string/select_artist" />
+
     </LinearLayout>
 
     <Button
-        android:id="@+id/register_button"
+        android:id="@+id/register_event_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="registerEvent"
         android:text="@string/register"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="117dp" />
+        tools:layout_editor_absoluteX="170dp" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
