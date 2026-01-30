@@ -1,8 +1,10 @@
 package com.example.cityeventsandr.api;
 
 import com.example.cityeventsandr.domain.Event;
+import com.example.cityeventsandr.domain.Location;
 
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -19,4 +21,5 @@ public interface EventApiInterface {
 
     @GET("events/{id}")
     Call<Event> getEventById(@Path("id") long id);
+
 }

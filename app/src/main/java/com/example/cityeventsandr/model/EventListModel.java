@@ -1,6 +1,6 @@
 package com.example.cityeventsandr.model;
 
-import com.example.cityeventsandr.api.EventApi;
+import com.example.cityeventsandr.api.CityEventsApi;
 import com.example.cityeventsandr.api.EventApiInterface;
 import com.example.cityeventsandr.contract.EventListContract;
 import com.example.cityeventsandr.domain.Event;
@@ -14,7 +14,7 @@ import retrofit2.Response;
 public class EventListModel implements EventListContract.Model {
     @Override
     public void loadEvents(OnLoadListener listener) {
-        EventApiInterface eventAPi = EventApi.buildInstance();
+        EventApiInterface eventAPi = CityEventsApi.buildService(EventApiInterface.class);
         Call<List<Event>> getEventsCall = eventAPi.getEvents(); //recogemos el resultado de la llamda
         getEventsCall.enqueue(new Callback<>() {
             @Override
@@ -29,7 +29,12 @@ public class EventListModel implements EventListContract.Model {
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-                listener.onLoadError("No se ha podido conectar con el servidor");
+                // AÑADE ESTAS DOS LÍNEAS:
+                android.util.Log.e("API_ERROR", "Causa del fallo: " + t.getMessage());
+                t.printStackTrace();
+
+                // Tu código actual:
+                listener.onLoadError("No se ha podido conectar: " + t.getMessage());
             }
         });
     }
