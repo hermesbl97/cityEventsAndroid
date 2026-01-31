@@ -29,7 +29,7 @@ public class RegisterEventModel implements RegisterEventContract.Model {
                 } else if (response.code() == 400) {
                     listener.onRegisterError("Error de validación");
                 } else if (response.code() == 404) {
-                    listener.onRegisterError("Not Found Exception");
+                    listener.onRegisterError("Evento no encontrado");
                 }
             }
 

@@ -37,8 +37,8 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
     public void onBindViewHolder(@NonNull LocationAdapter.LocationHolder holder, int position) {
         Location location = locationList.get(position);
 
-        holder.itemLocationName.setText("Nombre: "+ location.getName());
-        holder.itemLocationCategory.setText("Categoría:" +  location.getCategory());
+        holder.itemLocationName.setText(location.getName());
+        holder.itemLocationCategory.setText(location.getCategory());
 
         if (location.isDisabledAccess()) {
             holder.itemLocationDisabledAccess.setVisibility(View.VISIBLE);

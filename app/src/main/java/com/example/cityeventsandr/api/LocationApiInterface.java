@@ -15,5 +15,5 @@ public interface LocationApiInterface {
     Call<List<Location>> getLocations();
 
     @POST("locations")
-    Call<List<Location>> registerLocation(@Body Location location);
+    Call<Location> registerLocation(@Body Location location);
 }
