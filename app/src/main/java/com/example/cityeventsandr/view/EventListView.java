@@ -13,18 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.adapter.EventAdapter;
-import com.example.cityeventsandr.api.EventApi;
-import com.example.cityeventsandr.api.EventApiInterface;
 import com.example.cityeventsandr.contract.EventListContract;
 import com.example.cityeventsandr.domain.Event;
 import com.example.cityeventsandr.presenter.EventListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class EventListView extends AppCompatActivity implements EventListContract.View {
 
@@ -82,7 +76,7 @@ public class EventListView extends AppCompatActivity implements EventListContrac
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_register_event) { //si se selecciona la opción de registrar evento
-            Intent intent = new Intent(this, RegisterEventActivity.class);
+            Intent intent = new Intent(this, RegisterEventView.class);
             startActivity(intent);
             return true;
         }

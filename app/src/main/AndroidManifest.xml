@@ -16,7 +16,7 @@
         android:theme="@style/Theme.CityEventsAndr"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".view.RegisterEventActivity"
+            android:name=".view.RegisterEventView"
             android:exported="false" />
         <activity
             android:name=".view.EventListView"
