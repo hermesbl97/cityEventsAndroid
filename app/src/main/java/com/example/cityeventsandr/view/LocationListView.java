@@ -6,55 +6,59 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityeventsandr.R;
-import com.example.cityeventsandr.adapter.EventAdapter;
-import com.example.cityeventsandr.contract.EventListContract;
-import com.example.cityeventsandr.domain.Event;
-import com.example.cityeventsandr.presenter.EventListPresenter;
+import com.example.cityeventsandr.adapter.LocationAdapter;
+import com.example.cityeventsandr.contract.LocationListContract;
+import com.example.cityeventsandr.domain.Location;
+import com.example.cityeventsandr.presenter.LocationListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventListView extends AppCompatActivity implements EventListContract.View {
+public class LocationListView extends AppCompatActivity implements LocationListContract.View {
 
-    private EventAdapter eventAdapter;
-    private List<Event> eventList;
-    private EventListPresenter presenter;
+    private LocationAdapter locationAdapter;
+    private List<Location> locationList;
+    private LocationListPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_location_list_view);
 
-        presenter = new EventListPresenter(this);
+        presenter = new LocationListPresenter(this);
+        locationList = new ArrayList<>();
 
-        eventList = new ArrayList<>();
-
-        RecyclerView recyclerView = findViewById(R.id.event_list);
+        RecyclerView recyclerView = findViewById(R.id.location_list);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        eventAdapter = new EventAdapter(this, eventList);
-        recyclerView.setAdapter(eventAdapter);
+        locationAdapter = new LocationAdapter(this, locationList);
+        recyclerView.setAdapter(locationAdapter);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        presenter.loadEvents();
+        presenter.loadLocations();
     }
 
     @Override
-    public void showEvents(List<Event> events) {
-        eventList.clear();
-        eventList.addAll(events);
-        eventAdapter.notifyDataSetChanged();
+    public void showLocations(List<Location> locations) {
+        locationList.clear();
+        locationList.addAll(locations);
+        locationAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -87,6 +91,5 @@ public class EventListView extends AppCompatActivity implements EventListContrac
 
         return false;
     }
-
 
 }
