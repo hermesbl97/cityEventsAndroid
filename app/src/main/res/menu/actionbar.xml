@@ -6,4 +6,9 @@
         android:id="@+id/action_register_event"
         android:icon="@android:drawable/ic_input_add"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_getall_locations"
+        android:icon="@android:drawable/ic_menu_myplaces"
+        android:iconTint="#EF1B0B"
+        app:showAsAction="always" />
 </menu>

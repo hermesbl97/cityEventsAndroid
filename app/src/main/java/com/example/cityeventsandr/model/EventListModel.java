@@ -29,11 +29,9 @@ public class EventListModel implements EventListContract.Model {
 
             @Override
             public void onFailure(Call<List<Event>> call, Throwable t) {
-                // AÑADE ESTAS DOS LÍNEAS:
                 android.util.Log.e("API_ERROR", "Causa del fallo: " + t.getMessage());
                 t.printStackTrace();
 
-                // Tu código actual:
                 listener.onLoadError("No se ha podido conectar: " + t.getMessage());
             }
         });
