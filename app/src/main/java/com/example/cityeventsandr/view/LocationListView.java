@@ -80,7 +80,7 @@ public class LocationListView extends AppCompatActivity implements LocationListC
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_register_event) { //si se selecciona la opción de registrar evento
-            Intent intent = new Intent(this, RegisterEventView.class);
+            Intent intent = new Intent(this, RegisterLocationView.class);
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.action_getall_locations) {
