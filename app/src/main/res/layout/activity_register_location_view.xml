@@ -33,7 +33,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/location_category" />
+            android:hint="@string/category" />
 
         <EditText
             android:id="@+id/location_streetLocated"
@@ -46,7 +46,7 @@
             android:id="@+id/location_postalCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/location_postalCode"
+            android:hint="@string/postalCode"
             android:ems="10"
             android:inputType="number" />
 
@@ -54,7 +54,7 @@
             android:id="@+id/location_registerDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/location_registerDate"
+            android:hint="@string/register_date"
             android:ems="10"
             android:inputType="date" />
 
@@ -62,7 +62,7 @@
             android:id="@+id/location_disabledAccess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/location_disabled_access" />
+            android:text="@string/disabled_access" />
     </LinearLayout>
 
     <Button
@@ -74,7 +74,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

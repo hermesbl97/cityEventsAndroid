@@ -1,6 +1,7 @@
 package com.example.cityeventsandr.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.domain.Location;
+import com.example.cityeventsandr.view.LocationDetailView;
 
 import java.util.List;
 
@@ -45,6 +47,13 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
         } else {
             holder.itemLocationDisabledAccess.setVisibility(View.GONE);
         }
+
+
+        holder.itemView.setOnClickListener(v -> { //al clickar la localización da vista detalle
+            Intent intent = new Intent(context, LocationDetailView.class);
+            intent.putExtra("location_id", location.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
@@ -64,6 +73,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             itemLocationName = itemView.findViewById(R.id.item_location_name);
             itemLocationCategory = itemView.findViewById(R.id.item_location_category);
             itemLocationDisabledAccess = itemView.findViewById(R.id.item_location_disabledAccess);
+
         }
     }
 }

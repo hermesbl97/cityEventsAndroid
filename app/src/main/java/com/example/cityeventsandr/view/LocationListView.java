@@ -58,7 +58,6 @@ public class LocationListView extends AppCompatActivity implements LocationListC
         locationList.clear();
         locationList.addAll(locations);
         locationAdapter.notifyDataSetChanged();
-
     }
 
     @Override
