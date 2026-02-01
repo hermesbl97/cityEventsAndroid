@@ -4,7 +4,8 @@ import com.example.cityeventsandr.contract.LocationDetailContract;
 import com.example.cityeventsandr.domain.Location;
 import com.example.cityeventsandr.model.LocationDetailModel;
 
-public class LocationDetailPresenter implements LocationDetailContract.Presenter, LocationDetailContract.Model.OnLoadListener {
+public class LocationDetailPresenter implements LocationDetailContract.Presenter, LocationDetailContract.Model.OnLoadListener,
+    LocationDetailContract.Model.OnDeleteListener{
 
     private LocationDetailContract.View view;
     private LocationDetailContract.Model model;
@@ -20,12 +21,27 @@ public class LocationDetailPresenter implements LocationDetailContract.Presenter
     }
 
     @Override
+    public void deleteLocation(long id) {
+        model.deleteLocation(id, this);
+    }
+
+    @Override
     public void onLoadSuccess(Location location) {
         view.showLocation(location);
     }
 
     @Override
     public void onLoadError(String message) {
+        view.showError(message);
+    }
+
+    @Override
+    public void onDeleteSuccess() {
+        view.showMessage("Se ha eliminado la localización con éxito");
+    }
+
+    @Override
+    public void onDeleteError(String message) {
         view.showError(message);
     }
 }

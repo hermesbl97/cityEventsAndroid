@@ -73,7 +73,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             itemLocationName = itemView.findViewById(R.id.item_location_name);
             itemLocationCategory = itemView.findViewById(R.id.item_location_category);
             itemLocationDisabledAccess = itemView.findViewById(R.id.item_location_disabledAccess);
-
         }
     }
 }

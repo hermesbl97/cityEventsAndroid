@@ -11,10 +11,17 @@ public interface LocationDetailContract {
         }
 
         void loadLocationById(long id, OnLoadListener listener);
+
+        interface OnDeleteListener {
+            void onDeleteSuccess();
+            void onDeleteError(String message);
+        }
+        void deleteLocation(long id, OnDeleteListener listener);
     }
 
     interface Presenter {
         void loadLocation(long id);
+        void deleteLocation(long id);
     }
 
     interface View {
