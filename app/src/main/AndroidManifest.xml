@@ -16,6 +16,9 @@
         android:theme="@style/Theme.CityEventsAndr"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.LocationDetailView"
+            android:exported="false" />
+        <activity
             android:name=".view.RegisterLocationView"
             android:exported="false" />
         <activity

@@ -11,11 +11,11 @@
     <string name="select_artist">select_artist</string>
     <string name="location_name">Nombre</string>
     <string name="lcoation_description">Descripción</string>
-    <string name="location_category">Categoría</string>
+    <string name="category">Categoría</string>
     <string name="location_street">Calle</string>
-    <string name="location_postalCode">Código Postal</string>
-    <string name="location_registerDate">Fecha registro</string>
-    <string name="location_disabled_access">Acceso discapacitados</string>
+    <string name="postalCode">Código Postal</string>
+    <string name="register_date">Fecha registro</string>
+    <string name="disabled_access">Acceso discapacitados</string>
     <string name="location_register_button">Registrar Localización</string>
 
 </resources>
