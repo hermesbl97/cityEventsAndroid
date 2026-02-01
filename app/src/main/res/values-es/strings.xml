@@ -17,5 +17,6 @@
     <string name="register_date">Fecha registro</string>
     <string name="disabled_access">Acceso discapacitados</string>
     <string name="location_register_button">Registrar Localización</string>
+    <string name="delete_location">Borrar localización</string>
 
 </resources>

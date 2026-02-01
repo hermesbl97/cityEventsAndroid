@@ -1,6 +1,8 @@
 package com.example.cityeventsandr.view;//package com.example.cityeventsandr.view;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,6 +39,15 @@ public class LocationDetailView extends AppCompatActivity implements LocationDet
     public void showLocation(Location location) {
         adapter = new LocationDetailAdapter(location);
         recyclerView.setAdapter(adapter);
+    }
+
+    public void deleteLocation(View view) {
+        long locationId = getIntent().getLongExtra("location_id", -1);
+        if (locationId != -1) {
+            presenter.deleteLocation(locationId);
+        } else {
+            Toast.makeText(this,"No se pudo obtener el ID de la localización" , Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

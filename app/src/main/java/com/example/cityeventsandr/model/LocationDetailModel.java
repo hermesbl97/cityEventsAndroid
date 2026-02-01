@@ -32,4 +32,28 @@ public class LocationDetailModel implements LocationDetailContract.Model {
             }
         });
     }
+
+    @Override
+    public void deleteLocation(long id, OnDeleteListener listener) {
+        LocationApiInterface locationApi = CityEventsApi.buildService(LocationApiInterface.class);
+        Call<Void> deleteLocationCall = locationApi.deleteLocation(id);
+        deleteLocationCall.enqueue(new Callback<Void>() {
+            @Override
+            public void onResponse(Call<Void> call, Response<Void> response) {
+                if (response.code() == 204) {
+                    listener.onDeleteSuccess();
+                } else if (response.code() == 404) {
+                    listener.onDeleteError("No se ha encontrado la localización");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Void> call, Throwable t) {
+                listener.onDeleteError("No se pudo conectar con el servidor");
+
+            }
+        });
+
+    }
+
 }
