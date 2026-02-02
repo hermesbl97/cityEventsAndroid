@@ -18,5 +18,15 @@
     <string name="disabled_access">Acceso discapacitados</string>
     <string name="location_register_button">Registrar Localización</string>
     <string name="delete_location">Borrar localización</string>
+    <string name="birth_date">Fecha de nacimiento</string>
+    <string name="active">Activo</string>
+    <string name="register_artist">Registrar Artista</string>
+    <string name="followers">Seguidores</string>
+    <string name="genre">Género</string>
+    <string name="type">Tipo</string>
+    <string name="surname">Apellido</string>
+    <string name="name">Nombre</string>
+    <string name="height">Altura</string>
+
 
 </resources>

@@ -77,7 +77,7 @@ public class ArtistListView extends AppCompatActivity implements ArtistListContr
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.action_register_event) { //si se selecciona la opción de registrar evento
-            Intent intent = new Intent(this, RegisterEventView.class);
+            Intent intent = new Intent(this, RegisterArtistView.class);
             startActivity(intent);
             return true;
         } else if (item.getItemId() == R.id.action_getall_locations) {

@@ -60,13 +60,13 @@ public class RegisterLocationView extends AppCompatActivity implements RegisterL
             return;
         }
 
-        String name = ((EditText) findViewById(R.id.location_name)).getText().toString();
-        String description = ((EditText) findViewById(R.id.location_description)).getText().toString();
-        String category = ((EditText) findViewById(R.id.location_category)).getText().toString();
-        String streetLocated = ((EditText) findViewById(R.id.location_streetLocated)).getText().toString();
-        int postalCode = Integer.parseInt(((EditText) findViewById(R.id.location_postalCode)).getText().toString());
-        LocalDate registerDate =  DateUtil.parseDate(((EditText) findViewById(R.id.location_registerDate)).getText().toString());
-        boolean disabledAccess = ((CheckBox) findViewById(R.id.location_disabledAccess)).isChecked();
+        String name = ((EditText) findViewById(R.id.artist_name)).getText().toString();
+        String description = ((EditText) findViewById(R.id.artist_surname)).getText().toString();
+        String category = ((EditText) findViewById(R.id.artist_type)).getText().toString();
+        String streetLocated = ((EditText) findViewById(R.id.artist_genre)).getText().toString();
+        int postalCode = Integer.parseInt(((EditText) findViewById(R.id.artist_followers)).getText().toString());
+        LocalDate registerDate =  DateUtil.parseDate(((EditText) findViewById(R.id.artist_birthDate)).getText().toString());
+        boolean disabledAccess = ((CheckBox) findViewById(R.id.artist_active)).isChecked();
 
         presenter.registerLocation(name, description, category, streetLocated, postalCode, registerDate, disabledAccess, currentPoint.latitude(), currentPoint.longitude());
     }

@@ -18,35 +18,35 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:id="@+id/location_name"
+            android:id="@+id/artist_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/location_name" />
 
         <EditText
-            android:id="@+id/location_description"
+            android:id="@+id/artist_surname"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lcoation_description" />
 
         <EditText
-            android:id="@+id/location_category"
+            android:id="@+id/artist_type"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/category" />
 
         <EditText
-            android:id="@+id/location_streetLocated"
+            android:id="@+id/artist_genre"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/location_street" />
 
         <EditText
-            android:id="@+id/location_postalCode"
+            android:id="@+id/artist_followers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/postalCode"
@@ -54,7 +54,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/location_registerDate"
+            android:id="@+id/artist_birthDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/register_date"
@@ -62,7 +62,7 @@
             android:inputType="date" />
 
         <CheckBox
-            android:id="@+id/location_disabledAccess"
+            android:id="@+id/artist_active"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/disabled_access" />
@@ -79,12 +79,12 @@
             mapbox:mapbox_cameraTargetLng="-0.88333333333333"
             mapbox:mapbox_cameraZoom="12.0"
             app:layout_constraintTop_toBottomOf="@id/linearLayout"
-            app:layout_constraintBottom_toTopOf="@id/register_location_button"
+            app:layout_constraintBottom_toTopOf="@id/register_artist_button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
-        android:id="@+id/register_location_button"
+        android:id="@+id/register_artist_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/location_register_button"
