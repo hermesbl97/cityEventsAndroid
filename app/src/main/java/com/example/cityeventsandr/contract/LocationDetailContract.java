@@ -28,5 +28,6 @@ public interface LocationDetailContract {
         void showLocation(Location location);
         void showMessage(String message);
         void showError(String message);
+        void navigateToLocationList();
     }
 }

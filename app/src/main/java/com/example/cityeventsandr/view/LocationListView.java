@@ -87,7 +87,6 @@ public class LocationListView extends AppCompatActivity implements LocationListC
             startActivity(intent);
             return true;
         }
-
         return false;
     }
 

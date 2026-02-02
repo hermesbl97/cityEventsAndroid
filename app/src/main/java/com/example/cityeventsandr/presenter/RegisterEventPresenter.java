@@ -76,6 +76,7 @@ public class RegisterEventPresenter implements RegisterEventContract.Presenter,
     @Override
     public void onRegisterSuccess(Event event) {
         view.showMessage("Evento registrado correctamente");
+        view.navigateToEventList();
     }
 
     @Override

@@ -79,7 +79,6 @@
             android:layout_marginTop="16dp"
             android:paddingTop="5dp"
             android:prompt="@string/select_artist" />
-
     </LinearLayout>
 
     <Button

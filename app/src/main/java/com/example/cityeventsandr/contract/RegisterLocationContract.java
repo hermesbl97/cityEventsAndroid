@@ -19,12 +19,13 @@ public interface RegisterLocationContract {
 
     interface Presenter {
         void registerLocation(String name, String description, String category, String streetLocated,
-                              int postalCode, LocalDate registerDate, boolean disabledAccess);
-
+                              int postalCode, LocalDate registerDate, boolean disabledAccess,
+                              double latitude, double longitude);
     }
 
     interface View {
         void showMessage(String message);
         void showError(String message);
+        void navigateToLocationList();
     }
 }
