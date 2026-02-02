@@ -38,6 +38,7 @@ public class LocationDetailPresenter implements LocationDetailContract.Presenter
     @Override
     public void onDeleteSuccess() {
         view.showMessage("Se ha eliminado la localización con éxito");
+        view.navigateToLocationList();
     }
 
     @Override

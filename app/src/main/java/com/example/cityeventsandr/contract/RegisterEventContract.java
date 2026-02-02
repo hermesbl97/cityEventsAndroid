@@ -36,6 +36,7 @@ public interface RegisterEventContract {
         void showError(String message);
         void showLocations(List<Location> locations);
         void showArtists(List<Artist> artists);
+        void navigateToEventList();
     }
 
     interface Presenter {

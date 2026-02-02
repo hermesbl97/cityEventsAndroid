@@ -1,5 +1,6 @@
 package com.example.cityeventsandr.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -88,6 +89,13 @@ public class RegisterEventView extends AppCompatActivity implements RegisterEven
                 android.R.layout.simple_spinner_item, names);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerArtist.setAdapter(adapter);
+    }
+
+    @Override
+    public void navigateToEventList() {
+        Intent intent = new Intent(this, EventListView.class);
+        startActivity(intent);
+        finish();
     }
 
     // Method para obtener el Id de la localización seleccionada

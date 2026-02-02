@@ -18,6 +18,7 @@ public class Location {
     private int postalCode;
     private LocalDate registerDate;
     private boolean disabledAccess;
+    private double latitude;
+    private double longitude;
     private List<Event> events;
-
 }

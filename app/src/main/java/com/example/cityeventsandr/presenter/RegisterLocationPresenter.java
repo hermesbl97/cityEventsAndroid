@@ -18,7 +18,8 @@ public class RegisterLocationPresenter implements RegisterLocationContract.Prese
 
     @Override
     public void registerLocation(String name, String description, String category, String streetLocated,
-                                 int postalCode, LocalDate registerDate, boolean disabledAccess) {
+                                 int postalCode, LocalDate registerDate, boolean disabledAccess,
+                                 double latitude, double longitude) {
         Location location = Location.builder()
                 .name(name)
                 .description(description)
@@ -27,6 +28,8 @@ public class RegisterLocationPresenter implements RegisterLocationContract.Prese
                 .postalCode(postalCode)
                 .registerDate(registerDate)
                 .disabledAccess(disabledAccess)
+                .latitude(latitude)
+                .longitude(longitude)
                 .build();
 
         model.registerLocation(location, this);
@@ -35,7 +38,7 @@ public class RegisterLocationPresenter implements RegisterLocationContract.Prese
     @Override
     public void onRegisterSuccess(Location location) {
         view.showMessage("Se ha registrado la localización correctamente");
-
+        view.navigateToLocationList();
     }
 
     @Override
