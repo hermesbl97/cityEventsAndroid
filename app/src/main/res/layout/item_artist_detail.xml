@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/artist_detail_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Nombre Apellido" />
+
+        <TextView
+            android:id="@+id/artist_detail_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_name"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Tipo" />
+
+        <TextView
+            android:id="@+id/artist_detail_genre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_type"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Género" />
+
+        <TextView
+            android:id="@+id/artist_detail_birth_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_genre"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Fecha nacimiento: 01/01/1990" />
+
+        <TextView
+            android:id="@+id/artist_detail_followers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_birth_date"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Seguidores: 12345" />
+
+        <TextView
+            android:id="@+id/artist_detail_height"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_followers"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Altura: 1.80m" />
+
+        <TextView
+            android:id="@+id/artist_detail_active"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_height"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Activo: Sí" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/button_delete_artist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Eliminar 🗑️"
+            android:textColor="@android:color/white"
+            app:backgroundTint="@android:color/holo_red_dark"
+            android:onClick="deleteArtist"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_active"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

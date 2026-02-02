@@ -16,13 +16,13 @@ public interface LocationApiInterface {
     @GET("locations")
     Call<List<Location>> getLocations();
 
-    @GET("/locations/{id}")
+    @GET("locations/{id}")
     Call<Location> getLocationById(@Path("id") long id);
 
     @POST("locations")
     Call<Location> registerLocation(@Body Location location);
 
 
-    @DELETE("/locations/{id}")
+    @DELETE("locations/{id}")
     Call<Void> deleteLocation(@Path("id") long id);
 }

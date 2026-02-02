@@ -50,7 +50,6 @@ public class LocationDetailModel implements LocationDetailContract.Model {
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
                 listener.onDeleteError("No se pudo conectar con el servidor");
-
             }
         });
 

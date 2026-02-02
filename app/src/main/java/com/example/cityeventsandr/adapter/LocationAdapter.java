@@ -48,7 +48,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.Locati
             holder.itemLocationDisabledAccess.setVisibility(View.GONE);
         }
 
-
         holder.itemView.setOnClickListener(v -> { //al clickar la localización da vista detalle
             Intent intent = new Intent(context, LocationDetailView.class);
             intent.putExtra("location_id", location.getId());

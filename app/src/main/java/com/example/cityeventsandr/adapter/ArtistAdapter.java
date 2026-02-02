@@ -1,6 +1,7 @@
 package com.example.cityeventsandr.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.domain.Artist;
+import com.example.cityeventsandr.view.ArtistDetailView;
+import com.example.cityeventsandr.view.LocationDetailView;
 
 import java.util.List;
 
@@ -39,6 +42,12 @@ public class ArtistAdapter extends RecyclerView.Adapter<ArtistAdapter.ArtistHold
         holder.itemArtistName.setText(artist.getName() + " " + artist.getSurname() + " ⭐");
         holder.itemArtistType.setText(artist.getType());
         holder.itemArtistFollowers.setText(artist.getFollowers() + " followers \uD83D\uDC64");
+
+        holder.itemView.setOnClickListener(v -> { //al clickar el atista muestra vista detalle
+            Intent intent = new Intent(context, ArtistDetailView.class);
+            intent.putExtra("artist_id", artist.getId());
+            context.startActivity(intent);
+        });
     }
 
     @Override
