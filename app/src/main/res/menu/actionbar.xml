@@ -11,4 +11,9 @@
         android:icon="@android:drawable/ic_menu_myplaces"
         android:iconTint="#EF1B0B"
         app:showAsAction="always" />
+    <item
+        android:id="@+id/action_getall_artists"
+        android:icon="@android:drawable/btn_star_big_on"
+        android:title="Item"
+        app:showAsAction="always" />
 </menu>

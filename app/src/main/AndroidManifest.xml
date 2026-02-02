@@ -16,6 +16,12 @@
         android:theme="@style/Theme.CityEventsAndr"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".view.RegisterArtistView"
+            android:exported="false" />
+        <activity
+            android:name=".view.ArtistListView"
+            android:exported="false" />
+        <activity
             android:name=".view.LocationDetailView"
             android:exported="false" />
         <activity

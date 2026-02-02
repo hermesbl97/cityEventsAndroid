@@ -12,49 +12,50 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.cityeventsandr.R;
-import com.example.cityeventsandr.adapter.EventAdapter;
-import com.example.cityeventsandr.contract.EventListContract;
-import com.example.cityeventsandr.domain.Event;
-import com.example.cityeventsandr.presenter.EventListPresenter;
+import com.example.cityeventsandr.adapter.ArtistAdapter;
+import com.example.cityeventsandr.adapter.LocationAdapter;
+import com.example.cityeventsandr.contract.ArtistListContract;
+import com.example.cityeventsandr.domain.Artist;
+import com.example.cityeventsandr.presenter.ArtistListPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class EventListView extends AppCompatActivity implements EventListContract.View {
+public class ArtistListView extends AppCompatActivity implements ArtistListContract.View {
 
-    private EventAdapter eventAdapter;
-    private List<Event> eventList;
-    private EventListPresenter presenter;
+    private ArtistListContract.Presenter presenter;
+    private List<Artist> artistList;
+    private ArtistAdapter artistAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_artist_list_view);
 
-        presenter = new EventListPresenter(this);
+        presenter = new ArtistListPresenter(this);
+        artistList = new ArrayList<>();
 
-        eventList = new ArrayList<>();
-
-        RecyclerView recyclerView = findViewById(R.id.event_list);
+        RecyclerView recyclerView = findViewById(R.id.artist_list);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
-        eventAdapter = new EventAdapter(this, eventList);
-        recyclerView.setAdapter(eventAdapter);
+        artistAdapter = new ArtistAdapter(this, artistList);
+        recyclerView.setAdapter(artistAdapter);
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        presenter.loadEvents();
+        presenter.loadArtists();
     }
 
     @Override
-    public void showEvents(List<Event> events) {
-        eventList.clear();
-        eventList.addAll(events);
-        eventAdapter.notifyDataSetChanged();
+    public void showArtists(List<Artist> artists) {
+        artistList.clear();
+        artistList.addAll(artists);
+        artistAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -91,6 +92,4 @@ public class EventListView extends AppCompatActivity implements EventListContrac
 
         return false;
     }
-
-
 }
