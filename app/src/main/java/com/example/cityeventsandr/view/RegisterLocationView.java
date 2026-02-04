@@ -1,5 +1,6 @@
 package com.example.cityeventsandr.view;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -80,7 +81,23 @@ public class RegisterLocationView extends AppCompatActivity implements RegisterL
         LocalDate registerDate =  DateUtil.parseDate(((EditText) findViewById(R.id.location_registerDate)).getText().toString());
         boolean disabledAccess = ((CheckBox) findViewById(R.id.location_disabledAccess)).isChecked();
 
-        presenter.registerLocation(name, description, category, streetLocated, postalCode, registerDate, disabledAccess, currentPoint.latitude(), currentPoint.longitude());
+        // Compruebo si estamos editando
+        Location location = (Location) getIntent().getSerializableExtra("location");
+        boolean isEditing = location != null;
+
+        if (isEditing) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage("¿Está seguro de querer modificar la localización?")
+                    .setPositiveButton("Modificar", (dialogInterface, i) -> {
+                        presenter.registerLocation(name, description, category, streetLocated, postalCode,
+                                registerDate, disabledAccess, currentPoint.latitude(), currentPoint.longitude());
+                    })
+                    .setNegativeButton("Cancelar", (dialogInterface, i) -> dialogInterface.dismiss());
+            alert.create().show();
+        } else {
+            presenter.registerLocation(name, description, category, streetLocated, postalCode, registerDate,
+                    disabledAccess, currentPoint.latitude(), currentPoint.longitude());
+        }
     }
 
 
