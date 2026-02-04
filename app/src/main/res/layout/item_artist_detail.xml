@@ -1,8 +1,6 @@
-<?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -14,6 +12,7 @@
         android:layout_height="wrap_content"
         android:padding="16dp">
 
+        <!-- TextViews anteriores -->
         <TextView
             android:id="@+id/artist_detail_name"
             android:layout_width="0dp"
@@ -22,8 +21,7 @@
             android:textStyle="bold"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Nombre Apellido" />
+            app:layout_constraintEnd_toEndOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_type"
@@ -31,62 +29,73 @@
             android:layout_height="wrap_content"
             android:textStyle="italic"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_name"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Tipo" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_genre"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_type"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Género" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_birth_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_genre"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Fecha nacimiento: 01/01/1990" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_followers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_birth_date"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Seguidores: 12345" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_height"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_followers"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Altura: 1.80m" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/artist_detail_active"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_height"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Botones en la misma fila -->
+        <Button
+            android:id="@+id/edit_artist_button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Editar ✏️"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@android:color/holo_blue_dark"
+            android:onClick="editArtist"
+            android:padding="8dp"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/artist_detail_active"
             app:layout_constraintStart_toStartOf="parent"
-            tools:text="Activo: Sí" />
+            app:layout_constraintEnd_toStartOf="@+id/button_delete_artist"
+            app:layout_constraintWidth_percent="0.48"
+            android:layout_marginTop="16dp"/>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_delete_artist"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:text="Eliminar 🗑️"
             android:textColor="@android:color/white"
-            app:backgroundTint="@android:color/holo_red_dark"
+            android:backgroundTint="@android:color/holo_red_dark"
             android:onClick="deleteArtist"
             app:layout_constraintTop_toBottomOf="@id/artist_detail_active"
+            app:layout_constraintStart_toEndOf="@id/edit_artist_button"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginTop="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintWidth_percent="0.48"
+            android:layout_marginTop="16dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

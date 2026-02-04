@@ -32,4 +32,29 @@ public class RegisterArtistModel implements RegisterArtistContract.Model {
             }
         });
     }
+
+    @Override
+    public void modifyArtist(Artist artist, OnModifyListener listener) {
+        ArtistApiInterface artistApi = CityEventsApi.buildService(ArtistApiInterface.class);
+        Call<Artist> modifyArtistCall = artistApi.modifyArtistById(artist.getId(), artist);
+        modifyArtistCall.enqueue(new Callback<Artist>() {
+            @Override
+            public void onResponse(Call<Artist> call, Response<Artist> response) {
+                if (response.code() == 200){
+                    listener.onModifySuccess(response.body());
+                } else if (response.code() == 400) {
+                    listener.onModifyError("Bad Request");
+                } else if (response.code() == 404) {
+                    listener.onModifyError("No se ha encontrado el artista");
+                } else if (response.code() == 500) {
+                    listener.onModifyError("Internal Server error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Artist> call, Throwable t) {
+                listener.onModifyError("No se ha podido conectar con el servidor");
+            }
+        });
+    }
 }

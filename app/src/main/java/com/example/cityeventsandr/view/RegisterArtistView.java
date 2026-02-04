@@ -23,6 +23,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.contract.RegisterArtistContract;
+import com.example.cityeventsandr.domain.Artist;
 import com.example.cityeventsandr.presenter.RegisterArtistPresenter;
 import com.example.cityeventsandr.util.DateUtil;
 
@@ -39,7 +40,20 @@ public class RegisterArtistView extends AppCompatActivity implements RegisterArt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_artist_view);
 
-        presenter = new RegisterArtistPresenter(this);
+        //Recogemos al artist si editamos y sino será null
+        Artist artist = (Artist) getIntent().getSerializableExtra("artist");
+        presenter = new RegisterArtistPresenter(this, artist);
+
+        if (artist != null) { //si se modifica rellenamos los campos con sus valores
+            ((EditText) findViewById(R.id.artist_name)).setText(artist.getName());
+            ((EditText) findViewById(R.id.artist_surname)).setText(artist.getSurname());
+            ((EditText) findViewById(R.id.artist_type)).setText(artist.getType());
+            ((EditText) findViewById(R.id.artist_genre)).setText(artist.getGenre());
+            ((EditText) findViewById(R.id.artist_birthDate)).setText(DateUtil.formatDate(artist.getBirthDate()));
+            ((EditText) findViewById(R.id.artist_followers)).setText(String.valueOf(artist.getFollowers()));
+            ((EditText) findViewById(R.id.artist_height)).setText(String.valueOf(artist.getHeight()));
+            ((CheckBox) findViewById(R.id.artist_active)).setChecked(artist.isActive());
+        }
     }
 
     public void registerArtist(View view) {
@@ -85,7 +99,7 @@ public class RegisterArtistView extends AppCompatActivity implements RegisterArt
     }
 
     @Override
-    public void navigateToLocationList() {
+    public void navigateToArtistList() {
         Intent intent = new Intent(this, ArtistListView.class);
         startActivity(intent);
         finish();

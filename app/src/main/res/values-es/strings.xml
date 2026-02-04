@@ -20,7 +20,7 @@
     <string name="delete_location">Borrar localización</string>
     <string name="birth_date">Fecha de nacimiento</string>
     <string name="active">Activo</string>
-    <string name="register_artist">Registrar Artista</string>
+    <string name="register_artist">Guardar Artista</string>
     <string name="followers">Seguidores</string>
     <string name="genre">Género</string>
     <string name="type">Tipo</string>

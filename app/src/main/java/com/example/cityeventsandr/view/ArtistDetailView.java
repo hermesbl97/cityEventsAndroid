@@ -65,6 +65,19 @@ public class ArtistDetailView extends AppCompatActivity implements ArtistDetailC
         alert.create().show();
     }
 
+    public void editArtist(View view) {
+        long artistId = getIntent().getLongExtra("artist_id", -1);
+        if (artistId == -1) return;
+
+        Intent intent = new Intent(this, RegisterArtistView.class);
+
+        // Pasamos el objeto Artist actual.
+            intent.putExtra("artist", adapter.artist); //pasamos los datos de la activiy vista a la de registrar para editar
+            startActivity(intent);
+
+    }
+
+
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

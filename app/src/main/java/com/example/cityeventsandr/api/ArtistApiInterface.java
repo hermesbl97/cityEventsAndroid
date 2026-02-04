@@ -10,6 +10,7 @@ import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
 public interface ArtistApiInterface {
@@ -22,6 +23,9 @@ public interface ArtistApiInterface {
 
     @POST("artists")
     Call<Artist> registerArtist(@Body Artist artist);
+
+    @PUT("artists/{id}")
+    Call<Artist> modifyArtistById(@Path("id") long id, @Body Artist artist);
 
     @DELETE("artists/{id}")
     Call<Void> deleteArtist(@Path("id") long id);

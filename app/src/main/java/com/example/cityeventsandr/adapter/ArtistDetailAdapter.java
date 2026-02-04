@@ -13,7 +13,7 @@ import com.example.cityeventsandr.domain.Artist;
 
 public class ArtistDetailAdapter extends RecyclerView.Adapter<ArtistDetailAdapter.ViewHolder> {
 
-    private Artist artist;
+    public Artist artist;
 
     public ArtistDetailAdapter(Artist artist) {
         this.artist = artist;
