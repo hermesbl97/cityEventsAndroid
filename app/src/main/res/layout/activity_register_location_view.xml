@@ -18,35 +18,35 @@
         app:layout_constraintEnd_toEndOf="parent">
 
         <EditText
-            android:id="@+id/artist_name"
+            android:id="@+id/location_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/location_name" />
 
         <EditText
-            android:id="@+id/artist_surname"
+            android:id="@+id/location_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/lcoation_description" />
 
         <EditText
-            android:id="@+id/artist_type"
+            android:id="@+id/location_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/category" />
 
         <EditText
-            android:id="@+id/artist_genre"
+            android:id="@+id/location_street"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/location_street" />
 
         <EditText
-            android:id="@+id/artist_followers"
+            android:id="@+id/location_postalCode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/postalCode"
@@ -54,7 +54,7 @@
             android:inputType="number" />
 
         <EditText
-            android:id="@+id/artist_birthDate"
+            android:id="@+id/location_registerDate"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/register_date"
@@ -62,7 +62,7 @@
             android:inputType="date" />
 
         <CheckBox
-            android:id="@+id/artist_active"
+            android:id="@+id/location_disabledAccess"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/disabled_access" />

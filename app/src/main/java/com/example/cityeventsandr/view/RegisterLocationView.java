@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.contract.RegisterLocationContract;
+import com.example.cityeventsandr.domain.Location;
 import com.example.cityeventsandr.presenter.RegisterLocationPresenter;
 import com.example.cityeventsandr.util.DateUtil;
 import com.mapbox.geojson.Point;
@@ -43,7 +44,9 @@ public class RegisterLocationView extends AppCompatActivity implements RegisterL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_location_view);
 
-        presenter = new RegisterLocationPresenter(this);
+        //Recogemos la localización si editamos y sino será null
+        Location location = (Location) getIntent().getSerializableExtra("location");
+        presenter = new RegisterLocationPresenter(this, location);
 
         mapView = findViewById(R.id.mapView);
         mapView.getMapboxMap().loadStyleUri(Style.MAPBOX_STREETS);
@@ -51,6 +54,15 @@ public class RegisterLocationView extends AppCompatActivity implements RegisterL
         initializeAnnotationPlugin();
         initializeAnnotationManager();
 
+        if (location != null) {
+            ((EditText) findViewById(R.id.location_name)).setText(location.getName());
+            ((EditText) findViewById(R.id.location_description)).setText(location.getDescription());
+            ((EditText) findViewById(R.id.location_category)).setText(location.getCategory());
+            ((EditText) findViewById(R.id.location_street)).setText(location.getStreetLocated());
+            ((EditText) findViewById(R.id.location_postalCode)).setText(String.valueOf(location.getPostalCode()));
+            ((EditText) findViewById(R.id.location_registerDate)).setText(DateUtil.formatDate(location.getRegisterDate()));
+            ((CheckBox) findViewById(R.id.location_disabledAccess)).setChecked(location.isDisabledAccess());
+        }
     }
 
     public void registerLocation(View view) {
@@ -60,13 +72,13 @@ public class RegisterLocationView extends AppCompatActivity implements RegisterL
             return;
         }
 
-        String name = ((EditText) findViewById(R.id.artist_name)).getText().toString();
-        String description = ((EditText) findViewById(R.id.artist_surname)).getText().toString();
-        String category = ((EditText) findViewById(R.id.artist_type)).getText().toString();
-        String streetLocated = ((EditText) findViewById(R.id.artist_genre)).getText().toString();
-        int postalCode = Integer.parseInt(((EditText) findViewById(R.id.artist_followers)).getText().toString());
-        LocalDate registerDate =  DateUtil.parseDate(((EditText) findViewById(R.id.artist_birthDate)).getText().toString());
-        boolean disabledAccess = ((CheckBox) findViewById(R.id.artist_active)).isChecked();
+        String name = ((EditText) findViewById(R.id.location_name)).getText().toString();
+        String description = ((EditText) findViewById(R.id.location_description)).getText().toString();
+        String category = ((EditText) findViewById(R.id.location_category)).getText().toString();
+        String streetLocated = ((EditText) findViewById(R.id.location_street)).getText().toString();
+        int postalCode = Integer.parseInt(((EditText) findViewById(R.id.location_postalCode)).getText().toString());
+        LocalDate registerDate =  DateUtil.parseDate(((EditText) findViewById(R.id.location_registerDate)).getText().toString());
+        boolean disabledAccess = ((CheckBox) findViewById(R.id.location_disabledAccess)).isChecked();
 
         presenter.registerLocation(name, description, category, streetLocated, postalCode, registerDate, disabledAccess, currentPoint.latitude(), currentPoint.longitude());
     }

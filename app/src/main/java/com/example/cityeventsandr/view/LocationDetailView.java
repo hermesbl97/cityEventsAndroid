@@ -84,6 +84,17 @@ public class LocationDetailView extends AppCompatActivity implements LocationDet
         alert.create().show();
     }
 
+    public void editLocation(View view) {
+        long locationId = getIntent().getLongExtra("location_id", -1);
+        if (locationId == -1) return;
+
+        Intent intent = new Intent(this, RegisterLocationView.class);
+
+        // Pasamos el objeto Location actual.
+        intent.putExtra("location", adapter.location); //pasamos los datos de la activiy vista a la de registrar para editar
+        startActivity(intent);
+    }
+
     @Override
     public void showMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

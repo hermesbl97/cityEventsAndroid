@@ -1,25 +1,20 @@
 package com.example.cityeventsandr.view;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Base64;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.cityeventsandr.R;
 import com.example.cityeventsandr.contract.RegisterArtistContract;
@@ -27,7 +22,6 @@ import com.example.cityeventsandr.domain.Artist;
 import com.example.cityeventsandr.presenter.RegisterArtistPresenter;
 import com.example.cityeventsandr.util.DateUtil;
 
-import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 
 public class RegisterArtistView extends AppCompatActivity implements RegisterArtistContract.View {
@@ -67,8 +61,22 @@ public class RegisterArtistView extends AppCompatActivity implements RegisterArt
         float height = Float.parseFloat(((EditText) findViewById(R.id.artist_height)).getText().toString());
         boolean active = ((CheckBox) findViewById(R.id.artist_active)).isChecked();
 
-        presenter.registerArtist(name,surname, genre,type, birthDate,
-                followers, height, active);
+        // Compruebo si estamos editando
+        Artist artist = (Artist) getIntent().getSerializableExtra("artist");
+        boolean isEditing = artist != null;
+
+        if (isEditing) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setMessage("¿Está seguro de querer modificar el artista?")
+                    .setPositiveButton("Modificar", (dialogInterface, i) -> {
+                        presenter.registerArtist(name, surname, genre, type, birthDate, followers, height, active);
+                    })
+                    .setNegativeButton("Cancelar", (dialogInterface, i) -> dialogInterface.dismiss());
+            alert.create().show();
+        } else {
+            presenter.registerArtist(name, surname, genre, type, birthDate,
+                    followers, height, active);
+        }
     }
 
     public void selectImage(View view) { //acción para añadir imagen en el registro

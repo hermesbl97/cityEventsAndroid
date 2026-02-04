@@ -85,7 +85,7 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/button_delete_artist"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Eliminar 🗑️"
             android:textColor="@android:color/white"

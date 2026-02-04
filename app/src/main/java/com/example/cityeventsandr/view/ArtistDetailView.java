@@ -74,7 +74,6 @@ public class ArtistDetailView extends AppCompatActivity implements ArtistDetailC
         // Pasamos el objeto Artist actual.
             intent.putExtra("artist", adapter.artist); //pasamos los datos de la activiy vista a la de registrar para editar
             startActivity(intent);
-
     }
 
 

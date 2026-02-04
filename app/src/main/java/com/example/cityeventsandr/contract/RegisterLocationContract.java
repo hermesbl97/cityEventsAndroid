@@ -15,12 +15,22 @@ public interface RegisterLocationContract {
         }
 
         void registerLocation(Location location, OnRegisterListener listener);
+
+        interface OnModifyListener {
+            void onModifySuccess(Location location);
+            void onModifyError(String message);
+        }
+
+        void modifyLocation(Location location, OnModifyListener listener);
     }
 
     interface Presenter {
         void registerLocation(String name, String description, String category, String streetLocated,
                               int postalCode, LocalDate registerDate, boolean disabledAccess,
                               double latitude, double longitude);
+        void modifyLocation(String name, String description, String category, String streetLocated,
+                            int postalCode, LocalDate registerDate, boolean disabledAccess,
+                            double latitude, double longitude);
     }
 
     interface View {

@@ -33,4 +33,29 @@ public class RegisterLocationModel implements RegisterLocationContract.Model {
             }
         });
     }
+
+    @Override
+    public void modifyLocation(Location location, OnModifyListener listener) {
+        LocationApiInterface locationApi = CityEventsApi.buildService(LocationApiInterface.class);
+        Call<Location> modifyLocationCall = locationApi.modifyLocation(location.getId(), location);
+        modifyLocationCall.enqueue(new Callback<>() {
+            @Override
+            public void onResponse(Call<Location> call, Response<Location> response) {
+                if (response.code() == 200) {
+                    listener.onModifySuccess(response.body());
+                } else if (response.code() == 400) {
+                    listener.onModifyError("Bad Request");
+                } else if (response.code() == 404) {
+                    listener.onModifyError("No se ha encontrado la localización");
+                } else if (response.code() == 500) {
+                    listener.onModifyError("Internal Server error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Location> call, Throwable t) {
+                listener.onModifyError("No se ha podido conectar con el servidor");
+            }
+        });
+    }
 }

@@ -13,7 +13,7 @@ import com.example.cityeventsandr.domain.Location;
 
 public class LocationDetailAdapter extends RecyclerView.Adapter<LocationDetailAdapter.ViewHolder> {
 
-    private Location location;
+    public Location location;
 
     public LocationDetailAdapter(Location location) {
         this.location = location;
