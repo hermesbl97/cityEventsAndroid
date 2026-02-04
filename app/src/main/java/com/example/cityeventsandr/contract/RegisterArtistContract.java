@@ -22,8 +22,8 @@ public interface RegisterArtistContract {
     }
 
     interface Presenter {
-        void registerArtist(String name, String surname, String genre, String type,
-                            LocalDate birthDate, int followers, float height, boolean active);
+        void registerArtist(String name, String surname, String genre, String type, LocalDate birthDate,
+                            int followers, float height, boolean active);
 
     }
 }

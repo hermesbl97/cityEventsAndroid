@@ -1,13 +1,21 @@
 package com.example.cityeventsandr.view;
 
+import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
+import android.util.Base64;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -18,13 +26,13 @@ import com.example.cityeventsandr.contract.RegisterArtistContract;
 import com.example.cityeventsandr.presenter.RegisterArtistPresenter;
 import com.example.cityeventsandr.util.DateUtil;
 
+import java.io.ByteArrayOutputStream;
 import java.time.LocalDate;
 
 public class RegisterArtistView extends AppCompatActivity implements RegisterArtistContract.View {
 
     private RegisterArtistContract.Presenter presenter;
-
-
+    private Uri image_uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +43,7 @@ public class RegisterArtistView extends AppCompatActivity implements RegisterArt
     }
 
     public void registerArtist(View view) {
+
         String name = ((EditText) findViewById(R.id.artist_name)).getText().toString();
         String surname = ((EditText) findViewById(R.id.artist_surname)).getText().toString();
         String type = ((EditText) findViewById(R.id.artist_type)).getText().toString();
@@ -44,8 +53,26 @@ public class RegisterArtistView extends AppCompatActivity implements RegisterArt
         float height = Float.parseFloat(((EditText) findViewById(R.id.artist_height)).getText().toString());
         boolean active = ((CheckBox) findViewById(R.id.artist_active)).isChecked();
 
-        presenter.registerArtist(name,surname, genre,type, birthDate, followers, height, active);
+        presenter.registerArtist(name,surname, genre,type, birthDate,
+                followers, height, active);
     }
+
+    public void selectImage(View view) { //acción para añadir imagen en el registro
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        galleryActivityResultLauncher.launch(galleryIntent);
+    }
+
+    ActivityResultLauncher<Intent>  galleryActivityResultLauncher = registerForActivityResult(
+            new ActivityResultContracts.StartActivityForResult(),
+            result -> {
+                if (result.getResultCode() == Activity.RESULT_OK) { //si elijo una foto válida, cojo su dirección y la asigno al objeto
+                    image_uri = result.getData().getData();
+                    ImageView artistImage = findViewById(R.id.artist_image);
+                    artistImage.setImageURI(image_uri);
+                }
+            }
+    );
+
 
     @Override
     public void showMessage(String message) {

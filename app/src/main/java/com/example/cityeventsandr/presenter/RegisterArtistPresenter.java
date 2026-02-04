@@ -17,8 +17,8 @@ public class RegisterArtistPresenter implements RegisterArtistContract.Presenter
     }
 
     @Override
-    public void registerArtist(String name, String surname, String genre, String type,
-                               LocalDate birthDate, int followers, float height, boolean active) {
+    public void registerArtist(String name, String surname, String genre, String type, LocalDate birthDate,
+                               int followers, float height, boolean active) {
 
         Artist artist = Artist.builder()
                 .name(name)
